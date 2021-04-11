@@ -5,14 +5,14 @@ def write_key():
     Generates a key and save it into a file
     """
     key = Fernet.generate_key()
-    with open("key.key", "wb") as key_file:
+    with open("keys/key.key", "wb") as key_file:
         key_file.write(key)
 
 def load_key():
     """
     Loads the key from the current directory named `key.key`
     """
-    return open("key.key", "rb").read()
+    return open("keys/key.key", "rb").read()
 
 def encrypt(filename, key):
     """
@@ -48,11 +48,11 @@ def decrypt(filename, key):
 # uncomment this if it's the first time you run the code, to generate the key
 # write_key()
 # load the key
-key = load_key()
+#key = load_key()
 # file name
-file = "stuff.txt"
+#file = "stuff.txt"
 # encrypt it
 #encrypt(file, key)
 
 # decrypt the file
-decrypt(file, key)
+#decrypt(file, key)

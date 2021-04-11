@@ -73,16 +73,17 @@ def searchFile(size,query):
 	items = results.get('files', [])
 	if not items:
 		print('No files found.')
+		return 0
 	else:
 		print('Files:')
 		for item in items:
-			print(item)
 			print('{0} ({1})'.format(item['name'], item['id']))
+			return [item['name'], item['id']]
 
 #downloadFile('12tWCgAvgTHxtewNlDq_soaHskcvJKXwb','stuff.jpg')
 #uploadFile('logo.jpg','logo.jpg','image/jpeg')
 #createFolder('Google')
-#searchFile(30, "name contains 'mid'")
+#searchFile(30, "name = 'stuff.jpg'")
 
 
 

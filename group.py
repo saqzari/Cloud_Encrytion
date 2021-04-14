@@ -43,12 +43,13 @@ def add_to_group():
 
 def get_from_group():
     group = read()
-    print(group)
+    print('\nGroup Members:')
+    print('\n'.join(group))
+    print('')
 
 def check(user):
     group = read()
     if user in group:
         return 1
     return 0
-
 

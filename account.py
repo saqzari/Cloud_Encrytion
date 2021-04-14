@@ -27,7 +27,11 @@ def delete_user():
 
 def get_users():
     users = read()
-    print(users)
+    print ("")
+    print ("{:<8}        {:<10}".format('User Name:','Password:'))
+    for user_name, passwd in users.items():
+        print ("{:<8}          {:<10}".format(user_name, passwd))
+    print ("")
 
 def check(user):
     users = read()
@@ -38,7 +42,7 @@ def check(user):
 def create_account():
      users = read()
      while True:
-        createLogin = input("Create login name: ")
+        createLogin = input("\nCreate login name: ")
         if createLogin in users:
             print("\nLogin name already exist! Try again\n")
         else:
@@ -46,18 +50,22 @@ def create_account():
             users[createLogin] = createPassword
             write_back(users)
             print("\nUser created\n")
-            break
+            return 0
 
 def login():
      users = read()
      attempts = 0;
      while True:
-        input_user = input("Input login name: ")
+        input_user = input("\nInput login name: ")
         input_password = getpass.getpass("Input password: ")
-        if input_user in users:
+
+        if input_user == 'admin' and input_password == '123':
+            return [2, 'admin']
+
+        elif input_user in users:
             if users[input_user] == input_password:
                  print("\nLogin successful!\n")
-                 return 1
+                 return [1, input_user]
             else:
                 print("\nIncorrect password!\n")
                 attempts = attempts + 1
@@ -67,8 +75,7 @@ def login():
 
             if attempts == 3:
                 print("\nError! Too many attempts\n")
-                return 0
+                return [0, 'none']
            
-
 
 

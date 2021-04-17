@@ -3,6 +3,7 @@ import account
 
 a = account
 
+# reads array of users from group.pickle
 def read():
     f = open('pickles/group.pickle', "a")
     f.close()
@@ -13,10 +14,12 @@ def read():
             group = []
     return group
 
+# updates the pickle file with new array
 def write_back(group):
     with open('pickles/group.pickle', 'wb') as handle:
         pickle.dump(group, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+# remove user from group
 def delete_from_group():
     group = read()
     user_input = input("Input user to add to delete from group\n")
@@ -29,6 +32,7 @@ def delete_from_group():
     else:
         print("This user does not exist")
 
+# add user to group
 def add_to_group():
     group = read()
     user_input = input("Input user to add to group\n")
@@ -41,12 +45,14 @@ def add_to_group():
     else:
         print("This user does not exist")
 
+# prints user in group
 def get_from_group():
     group = read()
     print('\nGroup Members:')
     print('\n'.join(group))
     print('')
 
+# checks if user is in group
 def check(user):
     group = read()
     if user in group:

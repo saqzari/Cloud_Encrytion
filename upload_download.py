@@ -9,6 +9,7 @@ e = encrypt
 mime = magic.Magic(mime=True)
 
 
+# checks if file is in drive
 def check_file(file_name):
     result = g.searchFile(100, "name = \"" +  file_name + "\"")
     if result == 0:
@@ -16,6 +17,8 @@ def check_file(file_name):
     else:
         return 1
 
+
+# encrypt and upload file to drive
 def upload_encrypted():
     key = e.load_key()
     user_input = input("Input file to encrypt and upload to drive\n")
@@ -29,7 +32,7 @@ def upload_encrypted():
         print("File doesn't exist")
 
     
-
+# download file and decrypt
 def download_decrypted_group():
     key = e.load_key()
     user_input = input("Input file to download\n")
@@ -41,6 +44,8 @@ def download_decrypted_group():
     else:
         print("File doesn't exist")
 
+
+# download file without decrypting
 def download_decrypted_other():
     user_input = input("Input file to download\n")
     if check_file(user_input) == 1:

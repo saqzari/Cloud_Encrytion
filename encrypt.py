@@ -1,23 +1,17 @@
 from cryptography.fernet import Fernet
 
+# Generates a key and save it into a file
 def write_key():
-    """
-    Generates a key and save it into a file
-    """
     key = Fernet.generate_key()
     with open("keys/key.key", "wb") as key_file:
         key_file.write(key)
 
+# Loads the key from the current directory named `key.key`
 def load_key():
-    """
-    Loads the key from the current directory named `key.key`
-    """
     return open("keys/key.key", "rb").read()
 
+# Given a filename (str) and key (bytes), it encrypts the file and write it
 def encrypt(filename, key):
-    """
-    Given a filename (str) and key (bytes), it encrypts the file and write it
-    """
     f = Fernet(key)
 
     with open(filename, "rb") as file:
@@ -27,14 +21,12 @@ def encrypt(filename, key):
     # encrypt data
     encrypted_data = f.encrypt(file_data)
 
-        # write the encrypted file
+    # write the encrypted file
     with open(filename, "wb") as file:
         file.write(encrypted_data)
 
+# Given a filename and key, it decrypts the file and writes it
 def decrypt(filename, key):
-    """
-    Given a filename (str) and key (bytes), it decrypts the file and write it
-    """
     f = Fernet(key)
     with open(filename, "rb") as file:
         # read the encrypted data
@@ -44,15 +36,3 @@ def decrypt(filename, key):
     # write the original file
     with open(filename, "wb") as file:
         file.write(decrypted_data)
-
-# uncomment this if it's the first time you run the code, to generate the key
-# write_key()
-# load the key
-#key = load_key()
-# file name
-#file = "stuff.txt"
-# encrypt it
-#encrypt(file, key)
-
-# decrypt the file
-#decrypt(file, key)

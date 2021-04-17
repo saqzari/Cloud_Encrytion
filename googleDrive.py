@@ -15,8 +15,6 @@ try:
 except ImportError:
     flags = None
 
-# If modifying these scopes, delete your previously saved credentials
-# at ~/.credentials/drive-python-quickstart.json
 SCOPES = 'https://www.googleapis.com/auth/drive'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Drive API Python Quickstart'
@@ -79,11 +77,6 @@ def searchFile(size,query):
 		for item in items:
 			print('{0} ({1})'.format(item['name'], item['id']))
 			return [item['name'], item['id']]
-
-#downloadFile('12tWCgAvgTHxtewNlDq_soaHskcvJKXwb','stuff.jpg')
-#uploadFile('logo.jpg','logo.jpg','image/jpeg')
-#createFolder('Google')
-#searchFile(30, "name = 'stuff.jpg'")
 
 
 

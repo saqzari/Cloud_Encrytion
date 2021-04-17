@@ -1,6 +1,7 @@
 import pickle
 import getpass
 
+# reads hashmap of accounts from users.pickle
 def read():
     f = open('pickles/users.pickle', "a")
     f.close()
@@ -11,10 +12,14 @@ def read():
             users = []
     return users
 
+
+# updates the pickle file with new hashmap
 def write_back(users):
     with open('pickles/users.pickle', 'wb') as handle:
         pickle.dump(users, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+
+# delete account from system
 def delete_user():
     users = read()
     user_input = input("Input user to delete\n")
@@ -23,8 +28,10 @@ def delete_user():
         write_back(users)
         print("User has been deleted")
     else:
-        print("This user does not exist")
+        print("User does not exist")
 
+
+# prints all existing accounts
 def get_users():
     users = read()
     print ("")
@@ -33,18 +40,21 @@ def get_users():
         print ("{:<8}          {:<10}".format(user_name, passwd))
     print ("")
 
+
+# check if user exists
 def check(user):
     users = read()
     if user in users:
         return 1
     return 0
 
+# make new user account with password
 def create_account():
      users = read()
      while True:
         createLogin = input("\nCreate login name: ")
         if createLogin in users:
-            print("\nLogin name already exist! Try again\n")
+            print("\nLogin name already exists! Try again!\n")
         else:
             createPassword = getpass.getpass("Create password: ")
             users[createLogin] = createPassword
@@ -52,6 +62,8 @@ def create_account():
             print("\nUser created\n")
             return 0
 
+
+# login into existing account
 def login():
      users = read()
      attempts = 0;

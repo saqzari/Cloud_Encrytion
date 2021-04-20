@@ -31,9 +31,10 @@ def listFiles(size):
     if not items:
         print('No files found.')
     else:
-        print('Files:')
+        print('\nFiles:')
         for item in items:
             print('{0} ({1})'.format(item['name'], item['id']))
+        print('')
 
 def uploadFile(filename, filepath, mimetype):
 	file_metadata = {'name': filename}
@@ -70,12 +71,9 @@ def searchFile(size,query):
         pageSize=size,fields="nextPageToken, files(id, name, kind, mimeType)",q=query).execute()
 	items = results.get('files', [])
 	if not items:
-		print('No files found.')
 		return 0
 	else:
-		print('Files:')
 		for item in items:
-			print('{0} ({1})'.format(item['name'], item['id']))
 			return [item['name'], item['id']]
 
 

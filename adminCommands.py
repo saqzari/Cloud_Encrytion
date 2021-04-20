@@ -120,7 +120,7 @@ def upload_settings():
     upload_running = 1
     print("\nUpload Commands:"
             + "\n'u' - Upload file"  
-            + "\n'v'-  View all files"
+            + "\n'v' - View all files"
             + "\n'h' - Help"
             + "\n'e' - Exit to main menu\n")
     while upload_running == 1:
@@ -145,23 +145,28 @@ def upload_settings():
 def download_settings():
     download_running = 1
     print("\nDownload Commands:"
-            + "\n'd' - Download file"  
-            + "\n'v'-  View all files"
-            + "\n'h' - Help"
-            + "\n'e' - Exit to main menu\n")
+            + "\n'd'  - Download file decypted"
+            + "\n'dn' - Download file not decypted"  
+            + "\n'v'  - View all files"
+            + "\n'h'  - Help"
+            + "\n'e'  - Exit to main menu\n")
     while download_running == 1:
         user_input = input("Enter Download Command: ").lower()
 
         if(user_input == "d"):
             u.download_decrypted_group()
 
+        if(user_input == "dn"):
+            u.download_decrypted_other()
+
         elif(user_input == "v"):
             gd.listFiles(100)
 
         elif(user_input == "h"):
             print("\nDownload Commands:"
-            + "\n'd' - Download file"  
-            + "\n'v'-  View all files"
+            + "\n'd' - Download file"
+            + "\n'dn'- Download file not decrypted"  
+            + "\n'v' - View all files"
             + "\n'h' - Help"
             + "\n'e' - Exit to main menu\n")
 

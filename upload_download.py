@@ -51,7 +51,7 @@ def download_decrypted_other():
     if check_file(user_input) == 1:
         result = g.searchFile(100, "name = \"" + user_input + "\"")
         g.downloadFile(result[1], user_input)
-        print("Download completed. \nNote: Since you are not part of the group, file is encrypted")
+        print("Download completed. \nNote: File is still encrypted")
     else:
         print("File doesn't exist")
 
